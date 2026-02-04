@@ -1,0 +1,31 @@
+1. PHP Variables
+​In PHP, variables are like containers for storing information.
+​The $ Sign: All variables must start with a dollar sign (e.g., $user_id).
+​Loosely Typed: You don't have to tell PHP which data type the variable is; it figures it out automatically based on the value.
+​Case Sensitivity: $Variable and $variable are two different things.
+​Naming Rules: Must start with a letter or underscore, followed by letters, numbers, or underscores.
+
+1. String
+​A sequence of characters used for text. In cybersecurity, this is often where user input (like usernames or search queries) is stored.
+​Example: $protocol = "HTTPS";
+​2. Integer
+​A whole number without decimals. These are often used for port numbers, user IDs, or counting attempts.
+​Example: $port = 443;
+​3. Float (Floating Point Numbers)
+​Numbers that include a decimal point or an exponential form.
+​Example: $execution_time = 0.005;
+​4. Boolean
+​Represents only two states: true or false. These are critical for security logic, such as checking if a user is authenticated.
+​Example: $is_admin = true;
+​5. Array
+​A single variable that can hold multiple values at once. You might use this to store a list of allowed IP addresses or blocked keywords.
+​Example: $allowed_ips = array("192.168.1.1", "127.0.0.1");
+​6. Object
+​A data type that stores data and information on how to process that data (instances of a class).
+​Example: $session = new UserSession();
+​7. NULL
+​A special data type that represents a variable with no value. It is often used to initialize a variable before data is assigned to it.
+​Example: $db_connection = null;
+​8. Resource
+​A special variable holding a reference to an external resource (like a database connection or an open file).
+​Example: $file_handle = fopen("logs.txt", "r");
