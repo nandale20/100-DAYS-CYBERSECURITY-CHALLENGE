@@ -1,0 +1,37 @@
+Basics of Databases & Tables
+
+- What is a Database?  
+  A database is a structured collection of data that allows easy access, management, and updating. It’s like a digital filing cabinet for organized information.
+
+- What is a Table?  
+  A table is the basic unit of storage in a database. It organizes data into rows and columns, similar to a spreadsheet.
+
+- Fields and Records:  
+  - Fields (Columns): Define the type of data stored (e.g., Name, Age, Email).  
+  - Records (Rows): Each row represents a single entry or item in the table.
+
+- Primary Key:  
+  A special field that uniquely identifies each record in a table. It ensures data integrity and prevents duplication.
+
+- Relationships:  
+  Tables can be linked using keys to form relationships — essential for organizing complex data across multiple tables.
+Writing Queries with SELECT  
+   - Use SELECT to retrieve specific columns from a table.  
+   - Example: SELECT name, age FROM users;
+
+3.  Filtering Data Using WHERE  
+   - Use WHERE to filter rows based on conditions.  
+   - Example: SELECT * FROM users WHERE age > 18;
+
+4.  Sorting Results with ORDER BY  
+   - Use ORDER BY to sort results in ascending or descending order.  
+   - Example: SELECT * FROM users ORDER BY age DESC;
+
+5.  Aggregations with COUNT, SUM, AVG  
+   - Use aggregation functions to summarize data.  
+   - Example: SELECT COUNT(*) FROM users;  
+   - Example: SELECT AVG(salary) FROM employees;
+
+6.  Logical Conditions (AND / OR)  
+   - Combine multiple conditions using AND or OR.  
+   - Example: SELECT * FROM users WHERE age > 18 AND city = 'Vizag';
