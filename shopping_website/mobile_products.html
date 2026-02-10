@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Phones | NandaKart</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Elegant Color Palette */
+        /* Elegant Color Palette */
+:root {
+    --teal: #44ffd1;
+    --periwinkle: #6153cc;
+    --magenta: #a60067;
+    --rose: #961d4e;
+    --burgundy: #360a14;
+    --light-bg: #f9f7ff;
+    --white: #ffffff;
+    --light-gray: #f0eefc;
+    --medium-gray: #8a8aa3;
+    --dark-text: #1a1a2e;
+    --shadow: rgba(97, 83, 204, 0.1);
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    padding-top: 100px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--burgundy);
+}
+
+/* Navigation */
+.navbar {
+    background: linear-gradient(135deg, var(--periwinkle) 0%, var(--burgundy) 100%);
+    padding: 1rem 0;
+    box-shadow: 0 4px 20px rgba(54, 10, 20, 0.15);
+}
+
+.brand-main {
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.brand-accent {
+    color: var(--teal);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+/* Search Bar */
+.search-input {
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50px 0 0 50px;
+    padding: 0.75rem 1.5rem;
+}
+
+.search-input:focus {
+    background: var(--white);
+    box-shadow: none;
+}
+
+.search-btn {
+    background: var(--teal);
+    border: none;
+    color: var(--burgundy);
+    border-radius: 0 50px 50px 0;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background: var(--magenta);
+    color: var(--white);
+}
+
+/* Navigation Icons */
+.nav-icon {
+    color: var(--white);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-icon:hover {
+    color: var(--teal);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--magenta);
+    color: var(--white);
+    font-size: 0.7rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* Category Navigation */
+.category-nav {
+    background: var(--white);
+    box-shadow: 0 2px 10px var(--shadow);
+    border-bottom: 2px solid var(--light-gray);
+}
+
+.category-link {
+    color: var(--medium-gray);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin: 0 2px;
+}
+
+.category-link:hover {
+    color: var(--periwinkle);
+    background: rgba(97, 83, 204, 0.05);
+}
+
+.category-link.active {
+    background: var(--periwinkle);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(97, 83, 204, 0.2);
+}
+
+.category-link.active:hover {
+    background: var(--magenta);
+    color: var(--white);
+}
+
+/* Page Title */
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-subtitle {
+    color: var(--medium-gray);
+    font-size: 1.1rem;
+}
+
+/* Filter Section */
+.filter-section {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px var(--shadow);
+    border: 1px solid var(--light-gray);
+}
+
+.filter-label {
+    color: var(--burgundy);
+    font-weight: 600;
+}
+
+.filter-btn {
+    background: var(--white);
+    border: 2px solid var(--light-gray);
+    color: var(--medium-gray);
+    padding: 0.5rem 1.25rem;
+    border-radius: 25px;
+    font-weight: 500;
+    margin: 0 8px 8px 0;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--periwinkle);
+    border-color: var(--periwinkle);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(97, 83, 204, 0.2);
+}
+
+/* Custom Select */
+.custom-select {
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+    color: var(--burgundy);
+    font-weight: 500;
+}
+
+.custom-select:focus {
+    border-color: var(--periwinkle);
+    box-shadow: 0 0 0 3px rgba(97, 83, 204, 0.1);
+}
+
+/* Results Count */
+.results-count {
+    color: var(--burgundy);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.feature-tag {
+    background: linear-gradient(135deg, var(--teal) 0%, rgba(68, 255, 209, 0.1) 100%);
+    color: var(--burgundy);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Product Cards */
+.product-card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--white);
+    transition: all 0.4s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(97, 83, 204, 0.15);
+}
+
+.product-image {
+    height: 200px;
+    object-fit: contain;
+    background: linear-gradient(135deg, #f8f7ff 0%, #f0eefc 100%);
+    padding: 2rem;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+/* Product Badges */
+.product-badge {
+    position: absolute;
+    top: 15px;
+    z-index: 2;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.premium-badge {
+    left: 15px;
+    background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+    color: var(--white);
+}
+
+.sale-badge {
+    left: 15px;
+    background: var(--magenta);
+    color: var(--white);
+}
+
+.new-badge {
+    left: 15px;
+    background: var(--teal);
+    color: var(--burgundy);
+}
+
+.bestseller-badge {
+    right: 15px;
+    background: var(--rose);
+    color: var(--white);
+}
+
+/* Card Content */
+.product-brand {
+    color: var(--periwinkle);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.product-name {
+    color: var(--burgundy);
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+.product-desc {
+    color: var(--medium-gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Rating */
+.rating-stars {
+    color: var(--teal);
+    font-size: 0.9rem;
+}
+
+.rating-count {
+    color: var(--medium-gray);
+    font-size: 0.85rem;
+}
+
+/* Price */
+.current-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--magenta);
+}
+
+.original-price {
+    font-size: 1rem;
+    color: var(--medium-gray);
+    text-decoration: line-through;
+}
+
+/* Feature Tags */
+.feature-tag-small {
+    background: rgba(97, 83, 204, 0.1);
+    color: var(--periwinkle);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.add-to-cart-btn:hover {
+    background: linear-gradient(135deg, var(--magenta) 0%, var(--rose) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(166, 0, 103, 0.2);
+}
+
+/* Pagination */
+.custom-pagination .page-link {
+    border: none;
+    color: var(--medium-gray);
+    margin: 0 5px;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.custom-pagination .page-link:hover {
+    background: rgba(97, 83, 204, 0.1);
+    color: var(--periwinkle);
+}
+
+.custom-pagination .active .page-link {
+    background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(97, 83, 204, 0.2);
+}
+
+/* Footer */
+.footer {
+    background: var(--burgundy);
+    color: var(--white);
+    margin-top: 5rem;
+    padding-top: 4rem;
+}
+
+.footer-brand {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+}
+
+.footer-brand span {
+    color: var(--teal);
+}
+
+.footer-tagline {
+    color: var(--teal);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.footer-description {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.footer-heading {
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--teal);
+    padding-left: 5px;
+}
+
+/* Contact Info */
+.contact-info p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5rem;
+}
+
+.contact-icon {
+    color: var(--teal);
+    margin-right: 0.75rem;
+    width: 20px;
+}
+
+/* Newsletter */
+.newsletter-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border-radius: 25px 0 0 25px;
+    padding: 0.75rem 1.25rem;
+}
+
+.newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-btn {
+    background: var(--teal);
+    border: none;
+    color: var(--burgundy);
+    border-radius: 0 25px 25px 0;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.newsletter-btn:hover {
+    background: var(--magenta);
+    color: var(--white);
+}
+
+/* App Buttons */
+.app-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    padding: 0.75rem;
+    border-radius: 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.app-btn:hover {
+    background: var(--periwinkle);
+    color: var(--white);
+}
+
+/* Social Links */
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--teal);
+    color: var(--burgundy);
+}
+
+/* Copyright */
+.copyright {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+/* Payment Methods */
+.payment-icon {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.payment-icon:hover {
+    color: var(--teal);
+}
+
+/* Logo Icon Styling */
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--periwinkle) 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Logo Styles */
+.footer-logo-brand {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer-brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Small logo in copyright section */
+.footer-small-logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.product-card {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    body {
+        padding-top: 140px;
+    }
+    
+    .search-container {
+        order: 3;
+        width: 100%;
+        margin: 1rem 0 0 0 !important;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .category-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-image {
+        height: 180px;
+    }
+    
+    .filter-btn {
+        margin: 0 4px 8px 0;
+        padding: 0.4rem 1rem;
+    }
+    
+    .navbar-brand img {
+        height: 35px;
+    }
+    
+    .logo-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    /* Footer responsive adjustments */
+    .footer-logo-brand {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-logo-img {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .footer-brand {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title {
+        font-size: 1.75rem;
+    }
+    
+    .product-image {
+        height: 160px;
+    }
+    
+    .current-price {
+        font-size: 1.25rem;
+    }
+    
+    .footer-brand {
+        font-size: 1.8rem;
+    }
+    
+    .footer-logo-brand {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-logo-img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <!-- Logo Image -->
+            <img src="log2.png" alt="NandaKart Logo" height="45" class="me-2">
+            <!-- Brand Name (optional - can be hidden if logo contains text) -->
+            <div class="d-none d-md-block">
+                
+            </div>
+        </a>
+            
+            <!-- Search Bar -->
+            <div class="search-container mx-lg-3 flex-grow-1">
+                <div class="input-group">
+                    <input type="text" class="form-control search-input" placeholder="Search for mobiles, brands...">
+                    <button class="btn search-btn" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Cart & User -->
+            <div class="d-flex align-items-center">
+                <a href="#" class="nav-icon mx-3 position-relative">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                    <span class="cart-badge">3</span>
+                </a>
+                <a href="#" class="nav-icon mx-3">
+                    <i class="fas fa-user fa-lg"></i>
+                </a>
+                <button class="navbar-toggler border-0 nav-icon d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+  
+    
+
+    <!-- Main Content -->
+    <main class="container mt-4 pt-4">
+        <!-- Page Header -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h1 class="page-title mb-3">Premium Mobile Collection</h1>
+                <p class="page-subtitle">Discover the latest smartphones with cutting-edge technology</p>
+            </div>
+        </div>
+
+        <!-- Filter & Sort -->
+        <div class="row mb-4 filter-section">
+            <div class="col-md-8">
+                <div class="d-flex flex-wrap align-items-center">
+                    <span class="filter-label me-3">Filter by:</span>
+                    <div>
+                        <button class="btn filter-btn active">All Brands</button>
+                        <button class="btn filter-btn">Apple</button>
+                        <button class="btn filter-btn">Samsung</button>
+                        <button class="btn filter-btn">Google</button>
+                        <button class="btn filter-btn">OnePlus</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3 mt-md-0">
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <span class="filter-label me-2">Sort by:</span>
+                    <select class="form-select custom-select w-auto">
+                        <option>Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest Arrivals</option>
+                        <option>Best Rated</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Info -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <p class="results-count mb-0">128 Premium Devices Found</p>
+                    <span class="feature-tag">
+                        <i class="fas fa-bolt me-1"></i> Fast Delivery Available
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="row">
+            <!-- Product 1 -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge premium-badge">Premium</span>
+                        <span class="product-badge sale-badge">-18%</span>
+                        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             class="card-img-top product-image" alt="iPhone 14 Pro Max">
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">Apple</div>
+                        <h5 class="product-name mt-2">iPhone 14 Pro Max</h5>
+                        <p class="product-desc">6.7" Super Retina XDR, A16 Bionic, 48MP Pro Camera</p>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(428)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹199999</span>
+                            <span class="original-price ms-3">₹200099</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-bolt"></i> 1-Day Delivery
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-shield-alt"></i> 2-Year Warranty
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn" onclick="addToCart(this)">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge new-badge">New</span>
+                        <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             class="card-img-top product-image" alt="Samsung Galaxy S23 Ultra">
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">Samsung</div>
+                        <h5 class="product-name mt-2">Galaxy S23 Ultra</h5>
+                        <p class="product-desc">6.8" Dynamic AMOLED, 200MP Camera, S Pen Included</p>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(319)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹79000</span>
+                            <span class="original-price ms-3">₹99999</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-bolt"></i> 1-Day Delivery
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-gift"></i> Free Buds
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn" onclick="addToCart(this)">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge premium-badge">Premium</span>
+                        <span class="product-badge sale-badge">-12%</span>
+                        <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             class="card-img-top product-image" alt="Google Pixel 7 Pro">
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">Google</div>
+                        <h5 class="product-name mt-2">Pixel 7 Pro</h5>
+                        <p class="product-desc">6.7" QHD+ Display, Tensor G2, 5x Telephoto Lens</p>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(532)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹34000</span>
+                            <span class="original-price ms-3">₹45000</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-camera"></i> Best Camera
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-shield-alt"></i> 3-Year Warranty
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn" onclick="addToCart(this)">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge bestseller-badge">Bestseller</span>
+                        <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             class="card-img-top product-image" alt="OnePlus 11">
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">OnePlus</div>
+                        <h5 class="product-name mt-2">OnePlus 11 5G</h5>
+                        <p class="product-desc">6.7" Fluid AMOLED, Snapdragon 8 Gen 2, 100W Charging</p>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(267)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹45000</span>
+                            <span class="original-price ms-3">₹65000</span>
+
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-bolt"></i> Fast Charging
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-headphones"></i> Free Earbuds
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn" onclick="addToCart(this)">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge premium-badge">Premium</span>
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             class="card-img-top product-image" alt="Xiaomi 13 Pro">
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">Xiaomi</div>
+                        <h5 class="product-name mt-2">Xiaomi 13 Pro</h5>
+                        <p class="product-desc">6.73" AMOLED, Leica Camera, 120W HyperCharge</p>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(528)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹23000</span>
+                            <span class="original-price ms-3">₹45000</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-camera"></i> Leica Optics
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-bolt"></i> Ultra Fast Charge
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn" onclick="addToCart(this)">
+                                                        <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge sale-badge">-15%</span>
+                        <span class="product-badge bestseller-badge">Trending</span>
+                        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             class="card-img-top product-image" alt="iPhone 14">
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">Apple</div>
+                        <h5 class="product-name mt-2">iPhone 14</h5>
+                        <p class="product-desc">6.1" Super Retina XDR, A15 Bionic, Advanced Dual Camera</p>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(202)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹190000</span>
+                            <span class="original-price ms-3">₹230000</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-apple"></i> iOS 16
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-shield-alt"></i> Apple Care
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn" onclick="addToCart(this)">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge new-badge">Just Launched</span>
+                        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             class="card-img-top product-image" alt="Samsung Galaxy Z Flip4">
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">Samsung</div>
+                        <h5 class="product-name mt-2">Galaxy Z Flip4</h5>
+                        <p class="product-desc">Foldable 6.7" Display, Compact Design, Flex Mode</p>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(155)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹19000</span>
+                            <span class="original-price ms-3">₹230000</span>
+
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-mobile-alt"></i> Foldable
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-palette"></i> Multiple Colors
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn" onclick="addToCart(this)">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge sale-badge">-10%</span>
+                        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             class="card-img-top product-image" alt="Nothing Phone 1">
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">Nothing</div>
+                        <h5 class="product-name mt-2">Phone (1)</h5>
+                        <p class="product-desc">6.55" OLED, Glyph Interface, Snapdragon 778G+</p>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(142)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹70000</span>
+                            <span class="original-price ms-3">₹85000</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-lightbulb"></i> Glyph Interface
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-star"></i> Unique Design
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn" onclick="addToCart(this)">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="mt-5">
+            <ul class="pagination custom-pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><span class="page-link">...</span></li>
+                <li class="page-item"><a class="page-link" href="#">8</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <!-- Logo with Brand Name -->
+                <div class="footer-logo-brand mb-4">
+                    <!-- Logo Image -->
+                    <img src="logo.png" alt="NandaKart Logo" class="footer-logo-img me-3">
+                    <!-- Brand Name with styling -->
+                    <div class="footer-brand-text">
+                        <h3 class="footer-brand mb-1">Nanda<span>Kart</span></h3>
+                        <p class="footer-tagline mb-0">Redefining Luxury Shopping</p>
+                    </div>
+                </div>
+                
+                <p class="footer-description mb-4">
+                    Your premier destination for premium products with unparalleled quality and service.
+                </p>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone-alt contact-icon"></i> +1 234 567 9800</p>
+                    <p><i class="fas fa-envelope contact-icon"></i> support@nandakart.com</p>
+                    <p><i class="fas fa-map-marker-alt contact-icon"></i> 123 Luxury Avenue, Premium City</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                <h5 class="footer-heading">Shop</h5>
+                <ul class="footer-links">
+                    <li><a href="mobile_products.html">Mobile</a></li>
+                    <li><a href="fashion.html">Fashion</a></li>
+                    <li><a href="grocery.html">Grocery</a></li>
+                    <li><a href="beauty.html">Beauty</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="electronics.html">Electronics</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                <h5 class="footer-heading">Support</h5>
+                <ul class="footer-links">
+                    <li><a href="support.html">FAQs</a></li>
+                    <li><a href="support.html">Shipping</a></li>
+                    <li><a href="support.html">Returns</a></li>
+                    <li><a href="support.html">Contact</a></li>
+                    <li><a href="support.html">Track Order</a></li>
+                    <li><a href="support.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <h5 class="footer-heading">Stay Connected</h5>
+                <p class="text-white-50 mb-3">Subscribe for exclusive offers</p>
+                <div class="input-group mb-4">
+                    <input type="email" class="form-control newsletter-input" placeholder="Your email address">
+                    <button class="btn newsletter-btn" type="button">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="mb-4">
+                    <p class="text-white-50 mb-2">Download Our App</p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="app-btn flex-grow-1">
+                            <i class="fab fa-apple"></i>
+                            <span>App Store</span>
+                        </a>
+                        <a href="#" class="app-btn flex-grow-1">
+                            <i class="fab fa-google-play"></i>
+                            <span>Google Play</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4 border-secondary">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="d-flex align-items-center">
+                    <!-- Small logo in copyright section -->
+                    <img src="logo.png" alt="NandaKart Logo" class="footer-small-logo me-2">
+                    <p class="copyright mb-0">&copy; 2026 NandaKart. All rights reserved.</p>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <div class="d-flex justify-content-md-end gap-3">
+                    <i class="fab fa-cc-visa payment-icon"></i>
+                    <i class="fab fa-cc-mastercard payment-icon"></i>
+                    <i class="fab fa-cc-amex payment-icon"></i>
+                    <i class="fab fa-cc-paypal payment-icon"></i>
+                    <i class="fab fa-cc-apple-pay payment-icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Inline JavaScript for interactivity -->
+    <script>
+        // Add to Cart Functionality
+        function addToCart(button) {
+            const productCard = button.closest('.product-card');
+            const productName = productCard.querySelector('.product-name').textContent;
+            const cartBadge = document.querySelector('.cart-badge');
+            
+            // Change button text and style
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check me-2"></i>Added!';
+            button.style.background = 'linear-gradient(135deg, #961d4e 0%, #a60067 100%)';
+            
+            // Update cart count
+            let currentCount = parseInt(cartBadge.textContent);
+            cartBadge.textContent = currentCount + 1;
+            
+            // Add animation to cart badge
+            cartBadge.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                cartBadge.style.transform = 'scale(1)';
+            }, 300);
+            
+            // Reset button after 1.5 seconds
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.background = '';
+            }, 1500);
+            
+            // Show notification (using Bootstrap alert)
+            showNotification(`Added ${productName} to cart!`);
+        }
+        
+        // Filter button active state
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all filter buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                });
+            });
+            
+            // Newsletter form submission
+            const newsletterBtn = document.querySelector('.newsletter-btn');
+            if (newsletterBtn) {
+                newsletterBtn.addEventListener('click', function() {
+                    const emailInput = this.closest('.input-group').querySelector('.newsletter-input');
+                    const email = emailInput.value;
+                    
+                    if (email && email.includes('@')) {
+                        const originalHTML = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i>';
+                        this.style.background = '#961d4e';
+                        
+                        showNotification('Thank you for subscribing to NandaKart!');
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalHTML;
+                            this.style.background = '';
+                            emailInput.value = '';
+                        }, 2000);
+                    } else {
+                        showNotification('Please enter a valid email address.', 'danger');
+                    }
+                });
+            }
+            
+            // Filter by brand functionality
+            const brandFilterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            brandFilterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const brand = this.textContent.trim();
+                    
+                    if (brand === 'All Brands') {
+                        // Show all products
+                        productCards.forEach(card => {
+                            card.style.display = 'block';
+                        });
+                    } else {
+                        // Filter by brand
+                        productCards.forEach(card => {
+                            const cardBrand = card.querySelector('.product-brand').textContent.trim();
+                            card.style.display = cardBrand === brand ? 'block' : 'none';
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Notification function using Bootstrap
+        function showNotification(message, type = 'success') {
+            // Create alert element
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+            alertDiv.style.cssText = 'top: 100px; right: 20px; z-index: 1050; max-width: 300px;';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            // Add to body
+            document.body.appendChild(alertDiv);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.remove();
+                }
+            }, 3000);
+        }
+        
+        // Sort functionality
+        document.querySelector('.custom-select').addEventListener('change', function() {
+            const sortValue = this.value;
+            const productCards = Array.from(document.querySelectorAll('.product-card'));
+            
+            productCards.sort((a, b) => {
+                const priceA = parseFloat(a.querySelector('.current-price').textContent.replace('$', ''));
+                const priceB = parseFloat(b.querySelector('.current-price').textContent.replace('$', ''));
+                
+                switch(sortValue) {
+                    case 'Price: Low to High':
+                        return priceA - priceB;
+                    case 'Price: High to Low':
+                        return priceB - priceA;
+                    case 'Featured':
+                        // Default order
+                        return 0;
+                    default:
+                        return 0;
+                }
+            });
+            
+            // Reorder the product grid
+            const productGrid = document.querySelector('.row');
+            productCards.forEach(card => {
+                productGrid.appendChild(card.parentElement);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Furnishings | NandaKart</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Elegant Color Palette */
+        :root {
+            --teal: #44ffd1;
+            --periwinkle: #6153cc;
+            --magenta: #a60067;
+            --rose: #961d4e;
+            --burgundy: #360a14;
+            --light-bg: #f9f7ff;
+            --white: #ffffff;
+            --light-gray: #f0eefc;
+            --medium-gray: #8a8aa3;
+            --dark-text: #1a1a2e;
+            --shadow: rgba(97, 83, 204, 0.1);
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            padding-top: 100px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--burgundy);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--periwinkle) 0%, var(--burgundy) 100%);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(54, 10, 20, 0.15);
+        }
+
+        .brand-main {
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .brand-accent {
+            color: var(--teal);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Search Bar */
+        .search-input {
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50px 0 0 50px;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .search-input:focus {
+            background: var(--white);
+            box-shadow: none;
+        }
+
+        .search-btn {
+            background: var(--teal);
+            border: none;
+            color: var(--burgundy);
+            border-radius: 0 50px 50px 0;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: var(--magenta);
+            color: var(--white);
+        }
+
+        /* Navigation Icons */
+        .nav-icon {
+            color: var(--white);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-icon:hover {
+            color: var(--teal);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--magenta);
+            color: var(--white);
+            font-size: 0.7rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px var(--shadow);
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .category-link {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 0 2px;
+        }
+
+        .category-link:hover {
+            color: var(--periwinkle);
+            background: rgba(97, 83, 204, 0.05);
+        }
+
+        .category-link.active {
+            background: var(--periwinkle);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(97, 83, 204, 0.2);
+        }
+
+        .category-link.active:hover {
+            background: var(--magenta);
+            color: var(--white);
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px var(--shadow);
+            border: 1px solid var(--light-gray);
+        }
+
+        .filter-label {
+            color: var(--burgundy);
+            font-weight: 600;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            border: 2px solid var(--light-gray);
+            color: var(--medium-gray);
+            padding: 0.5rem 1.25rem;
+            border-radius: 25px;
+            font-weight: 500;
+            margin: 0 8px 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--periwinkle);
+            border-color: var(--periwinkle);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(97, 83, 204, 0.2);
+        }
+
+        /* Custom Select */
+        .custom-select {
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            color: var(--burgundy);
+            font-weight: 500;
+        }
+
+        .custom-select:focus {
+            border-color: var(--periwinkle);
+            box-shadow: 0 0 0 3px rgba(97, 83, 204, 0.1);
+        }
+
+        /* Results Count */
+        .results-count {
+            color: var(--burgundy);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .feature-tag {
+            background: linear-gradient(135deg, var(--teal) 0%, rgba(68, 255, 209, 0.1) 100%);
+            color: var(--burgundy);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Product Cards */
+        .product-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--white);
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(97, 83, 204, 0.15);
+        }
+
+        .product-image {
+            height: 320px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f8f7ff 0%, #f0eefc 100%);
+            padding: 1rem;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        /* 4:3 Aspect Ratio Container */
+        .aspect-ratio-4by3 {
+            position: relative;
+            padding-top: 75%; /* 4:3 Aspect Ratio (3/4 = 0.75) */
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f7ff 0%, #f0eefc 100%);
+        }
+
+        .aspect-ratio-4by3 img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .aspect-ratio-4by3 img {
+            transform: scale(1.05);
+        }
+
+        /* Product Badges */
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            z-index: 2;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .premium-badge {
+            left: 15px;
+            background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+            color: var(--white);
+        }
+
+        .sale-badge {
+            left: 15px;
+            background: var(--magenta);
+            color: var(--white);
+        }
+
+        .new-badge {
+            left: 15px;
+            background: var(--teal);
+            color: var(--burgundy);
+        }
+
+        .bestseller-badge {
+            right: 15px;
+            background: var(--rose);
+            color: var(--white);
+        }
+
+        .limited-badge {
+            left: 15px;
+            background: linear-gradient(135deg, var(--magenta) 0%, var(--rose) 100%);
+            color: var(--white);
+        }
+
+        .handmade-badge {
+            right: 15px;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--periwinkle) 100%);
+            color: var(--white);
+        }
+
+        /* Card Content */
+        .product-brand {
+            color: var(--periwinkle);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-name {
+            color: var(--burgundy);
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+
+        .product-desc {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Rating */
+        .rating-stars {
+            color: var(--teal);
+            font-size: 0.9rem;
+        }
+
+        .rating-count {
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+        }
+
+        /* Price */
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--magenta);
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: var(--medium-gray);
+            text-decoration: line-through;
+        }
+
+        /* Feature Tags */
+        .feature-tag-small {
+            background: rgba(97, 83, 204, 0.1);
+            color: var(--periwinkle);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Color Selector */
+        .color-selector {
+            display: flex;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .color-option {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.selected {
+            border-color: var(--periwinkle);
+            box-shadow: 0 0 0 2px rgba(97, 83, 204, 0.3);
+        }
+
+        /* Add to Cart Button */
+        .add-to-cart-btn {
+            background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .add-to-cart-btn:hover {
+            background: linear-gradient(135deg, var(--magenta) 0%, var(--rose) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(166, 0, 103, 0.2);
+        }
+
+        /* Pagination */
+        .custom-pagination .page-link {
+            border: none;
+            color: var(--medium-gray);
+            margin: 0 5px;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .custom-pagination .page-link:hover {
+            background: rgba(97, 83, 204, 0.1);
+            color: var(--periwinkle);
+        }
+
+        .custom-pagination .active .page-link {
+            background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(97, 83, 204, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--burgundy);
+            color: var(--white);
+            margin-top: 5rem;
+            padding-top: 4rem;
+        }
+
+        .footer-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: var(--white);
+        }
+
+        .footer-brand span {
+            color: var(--teal);
+        }
+
+        .footer-tagline {
+            color: var(--teal);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .footer-heading {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--teal);
+            padding-left: 5px;
+        }
+
+        /* Contact Info */
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-icon {
+            color: var(--teal);
+            margin-right: 0.75rem;
+            width: 20px;
+        }
+
+        /* Newsletter */
+        .newsletter-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border-radius: 25px 0 0 25px;
+            padding: 0.75rem 1.25rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter-btn {
+            background: var(--teal);
+            border: none;
+            color: var(--burgundy);
+            border-radius: 0 25px 25px 0;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--magenta);
+            color: var(--white);
+        }
+
+        /* App Buttons */
+        .app-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: 0.75rem;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .app-btn:hover {
+            background: var(--periwinkle);
+            color: var(--white);
+        }
+
+        /* Social Links */
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--teal);
+            color: var(--burgundy);
+        }
+
+        /* Copyright */
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Payment Methods */
+        .payment-icon {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .payment-icon:hover {
+            color: var(--teal);
+        }
+
+        /* Logo Icon Styling */
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--periwinkle) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer Logo Styles */
+        .footer-logo-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Small logo in copyright section */
+        .footer-small-logo {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Home Specific Styles */
+        .home-type {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .material-tag {
+            background: linear-gradient(135deg, var(--teal) 0%, rgba(68, 255, 209, 0.1) 100%);
+            color: var(--burgundy);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Color Classes */
+        .color-brown { background-color: #8B4513; }
+        .color-gray { background-color: #808080; }
+        .color-black { background-color: #000000; }
+        .color-white { background-color: #FFFFFF; border: 1px solid var(--light-gray); }
+        .color-navy { background-color: #000080; }
+        .color-beige { background-color: #F5F5DC; }
+        .color-walnut { background-color: #773f1a; }
+        .color-oak { background-color: #C19A6B; }
+
+        /* Dimensions */
+        .dimensions {
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            body {
+                padding-top: 140px;
+            }
+            
+            .search-container {
+                order: 3;
+                width: 100%;
+                margin: 1rem 0 0 0 !important;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .category-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .product-image {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-image {
+                height: 250px;
+            }
+            
+            .filter-btn {
+                margin: 0 4px 8px 0;
+                padding: 0.4rem 1rem;
+            }
+            
+            .navbar-brand img {
+                height: 35px;
+            }
+            
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            /* Footer responsive adjustments */
+            .footer-logo-brand {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-logo-img {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+            
+            .footer-brand {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-title {
+                font-size: 1.75rem;
+            }
+            
+            .product-image {
+                height: 220px;
+            }
+            
+            .current-price {
+                font-size: 1.25rem;
+            }
+            
+            .footer-brand {
+                font-size: 1.8rem;
+            }
+            
+            .footer-logo-brand {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-logo-img {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <!-- Logo Image -->
+                <img src="log2.png" alt="NandaKart Logo" height="45" class="me-2">
+                <!-- Brand Name -->
+                <div class="d-none d-md-block">
+                    <span class="brand-main">Nanda</span><span class="brand-accent">Kart</span>
+                </div>
+            </a>
+            
+            <!-- Search Bar -->
+            <div class="search-container mx-lg-3 flex-grow-1">
+                <div class="input-group">
+                    <input type="text" class="form-control search-input" placeholder="Search for furniture, decor, lighting...">
+                    <button class="btn search-btn" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Cart & User -->
+            <div class="d-flex align-items-center">
+                <a href="#" class="nav-icon mx-3 position-relative">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                    <span class="cart-badge">6</span>
+                </a>
+                <a href="#" class="nav-icon mx-3">
+                    <i class="fas fa-user fa-lg"></i>
+                </a>
+                <button class="navbar-toggler border-0 nav-icon d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="container mt-4 pt-4">
+        <!-- Page Header -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h1 class="page-title mb-3">Luxury Home Collection</h1>
+                <p class="page-subtitle">Premium furniture and home decor to elevate your living spaces</p>
+            </div>
+        </div>
+
+        <!-- Filter & Sort -->
+        <div class="row mb-4 filter-section">
+            <div class="col-md-8">
+                <div class="d-flex flex-wrap align-items-center">
+                    <span class="filter-label me-3">Filter by:</span>
+                    <div>
+                        <button class="btn filter-btn active">All Products</button>
+                        <button class="btn filter-btn">Sofas & Seating</button>
+                        <button class="btn filter-btn">Tables</button>
+                        <button class="btn filter-btn">Storage</button>
+                        <button class="btn filter-btn">Lighting</button>
+                        <button class="btn filter-btn">Decor</button>
+                        <button class="btn filter-btn">Bedroom</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3 mt-md-0">
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <span class="filter-label me-2">Sort by:</span>
+                    <select class="form-select custom-select w-auto">
+                        <option>Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest Arrivals</option>
+                        <option>Best Rated</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Info -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <p class="results-count mb-0">68 Premium Home Items Found</p>
+                    <span class="feature-tag">
+                        <i class="fas fa-truck me-1"></i> Free Assembly & Delivery
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="row">
+            <!-- Product 1: Luxury Sofa -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge premium-badge">Luxury</span>
+                        <span class="product-badge sale-badge">-15%</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Luxury Sofa">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">RESTFUL LIVING</div>
+                        <h5 class="product-name mt-2">Premium Chesterfield Sofa</h5>
+                        <p class="product-desc">Handcrafted leather sofa with tufted detailing and solid wood frame</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="home-type">3-Seater Sofa</span>
+                            <span class="material-tag">Genuine Leather</span>
+                        </div>
+                        
+                        <div class="dimensions mb-2">
+                            <i class="fas fa-ruler me-1"></i> 220cm x 95cm x 85cm
+                        </div>
+                        
+                        <div class="color-selector">
+                            <div class="color-option color-brown selected" title="Brown"></div>
+                            <div class="color-option color-black" title="Black"></div>
+                            <div class="color-option color-gray" title="Gray"></div>
+                            <div class="color-option color-navy" title="Navy Blue"></div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(167)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹2,499.00</span>
+                            <span class="original-price ms-3">₹2,999.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-tools"></i> Free Assembly
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-star"></i> Premium Quality
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: Dining Table -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge new-badge">New</span>
+                        <span class="product-badge handmade-badge">Handmade</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Dining Table">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">ARTISAN WOODS</div>
+                        <h5 class="product-name mt-2">Solid Wood Dining Table</h5>
+                        <p class="product-desc">Handcrafted solid oak table with elegant design and durable finish</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="home-type">8-Seater Table</span>
+                            <span class="material-tag">Solid Oak</span>
+                        </div>
+                        
+                        <div class="dimensions mb-2">
+                            <i class="fas fa-ruler me-1"></i> 240cm x 100cm x 75cm
+                        </div>
+                        
+                        <div class="color-selector">
+                            <div class="color-option color-oak selected" title="Natural Oak"></div>
+                            <div class="color-option color-walnut" title="Dark Walnut"></div>
+                            <div class="color-option color-black" title="Ebony"></div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(98)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹1,899.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-hands"></i> Handcrafted
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-tree"></i> Sustainable Wood
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: Bed Frame -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge premium-badge">Premium</span>
+                        <span class="product-badge sale-badge">-20%</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Bed Frame">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">SLEEP ELEGANCE</div>
+                        <h5 class="product-name mt-2">Upholstered King Bed</h5>
+                        <p class="product-desc">Luxury upholstered bed frame with storage and premium fabric</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="home-type">King Size Bed</span>
+                            <span class="material-tag">Premium Fabric</span>
+                        </div>
+                        
+                        <div class="dimensions mb-2">
+                            <i class="fas fa-ruler me-1"></i> 200cm x 180cm x 120cm
+                        </div>
+                        
+                        <div class="color-selector">
+                            <div class="color-option color-gray selected" title="Charcoal Gray"></div>
+                            <div class="color-option color-navy" title="Navy Blue"></div>
+                            <div class="color-option color-beige" title="Cream Beige"></div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(145)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹1,299.00</span>
+                            <span class="original-price ms-3">₹1,599.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-box"></i> Storage Included
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-bed"></i> Premium Comfort
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: Bookshelf -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge bestseller-badge">Bestseller</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Bookshelf">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">MODERN LIVING</div>
+                        <h5 class="product-name mt-2">Wall-Mount Bookshelf</h5>
+                        <p class="product-desc">Minimalist floating bookshelf with adjustable shelves and LED lighting</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="home-type">Storage Unit</span>
+                            <span class="material-tag">Engineered Wood</span>
+                        </div>
+                        
+                        <div class="dimensions mb-2">
+                            <i class="fas fa-ruler me-1"></i> 180cm x 40cm x 30cm
+                        </div>
+                        
+                        <div class="color-selector">
+                            <div class="color-option color-black selected" title="Matte Black"></div>
+                            <div class="color-option color-white" title="White"></div>
+                            <div class="color-option color-walnut" title="Walnut"></div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(212)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹449.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-lightbulb"></i> LED Lighting
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-sliders-h"></i> Adjustable Shelves
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5: Coffee Table -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge new-badge">Designer</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Coffee Table">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">DESIGNER HOME</div>
+                        <h5 class="product-name mt-2">Glass Top Coffee Table</h5>
+                        <p class="product-desc">Modern coffee table with tempered glass top and metal frame</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="home-type">Center Table</span>
+                            <span class="material-tag">Tempered Glass</span>
+                        </div>
+                        
+                        <div class="dimensions mb-2">
+                            <i class="fas fa-ruler me-1"></i> 120cm x 60cm x 45cm
+                        </div>
+                        
+                        <div class="color-selector">
+                            <div class="color-option color-black selected" title="Black Frame"></div>
+                            <div class="color-option color-gray" title="Chrome Frame"></div>
+                            <div class="color-option color-white" title="White Frame"></div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(189)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹599.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-shield-alt"></i> Safety Glass
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-broom"></i> Easy Clean
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6: Office Chair -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge sale-badge">-25%</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Office Chair">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">ERGONOMIC PRO</div>
+                        <h5 class="product-name mt-2">Executive Office Chair</h5>
+                        <p class="product-desc">Ergonomic office chair with lumbar support and adjustable features</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="home-type">Office Seating</span>
+                            <span class="material-tag">Mesh Fabric</span>
+                        </div>
+                        
+                        <div class="dimensions mb-2">
+                            <i class="fas fa-ruler me-1"></i> Adjustable Height
+                        </div>
+                        
+                        <div class="color-selector">
+                            <div class="color-option color-black selected" title="Black Mesh"></div>
+                            <div class="color-option color-gray" title="Gray Mesh"></div>
+                            <div class="color-option color-navy" title="Navy Mesh"></div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(278)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹349.00</span>
+                            <span class="original-price ms-3">₹449.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-user-md"></i> Ergonomic
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-sync-alt"></i> Adjustable
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7: Lighting -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge premium-badge">Smart</span>
+                        <span class="product-badge new-badge">Tech Enabled</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Smart Lighting">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">LUMINA TECH</div>
+                        <h5 class="product-name mt-2">Smart Chandelier</h5>
+                        <p class="product-desc">WiFi-enabled chandelier with voice control and color changing lights</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="home-type">Ceiling Light</span>
+                            <span class="material-tag">Smart Home</span>
+                        </div>
+                        
+                        <div class="dimensions mb-2">
+                            <i class="fas fa-ruler me-1"></i> Diameter: 90cm
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(134)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹799.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-microphone"></i> Voice Control
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-palette"></i> RGB Colors
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8: Outdoor Furniture -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge sale-badge">-30%</span>
+                        <span class="product-badge bestseller-badge">Outdoor</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Outdoor Furniture">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">GARDEN LUXURY</div>
+                        <h5 class="product-name mt-2">Weather-Resistant Lounge Set</h5>
+                        <p class="product-desc">Complete outdoor seating set with weatherproof cushions and table</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="home-type">6-Piece Set</span>
+                            <span class="material-tag">Weatherproof</span>
+                        </div>
+                        
+                        <div class="dimensions mb-2">
+                            <i class="fas fa-ruler me-1"></i> Complete Set
+                        </div>
+                        
+                        <div class="color-selector">
+                            <div class="color-option color-gray selected" title="Stone Gray"></div>
+                            <div class="color-option color-brown" title="Terracotta"></div>
+                            <div class="color-option color-navy" title="Ocean Blue"></div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(189)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹1,299.00</span>
+                            <span class="original-price ms-3">₹1,899.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-sun"></i> UV Resistant
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-umbrella"></i> Weatherproof
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="mt-5">
+            <ul class="pagination custom-pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><span class="page-link">...</span></li>
+                <li class="page-item"><a class="page-link" href="#">8</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <!-- Logo with Brand Name -->
+                    <div class="footer-logo-brand mb-4">
+                        <!-- Logo Image -->
+                        <img src="logo.png" alt="NandaKart Logo" class="footer-logo-img me-3">
+                        <!-- Brand Name with styling -->
+                        <div class="footer-brand-text">
+                            <h3 class="footer-brand mb-1">Nanda<span>Kart</span></h3>
+                            <p class="footer-tagline mb-0">Redefining Luxury Shopping</p>
+                        </div>
+                    </div>
+                    
+                    <p class="footer-description mb-4">
+                        Your premier destination for premium products with unparalleled quality and service.
+                    </p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-alt contact-icon"></i> +1 234 567 9800</p>
+                        <p><i class="fas fa-envelope contact-icon"></i> support@nandakart.com</p>
+                        <p><i class="fas fa-map-marker-alt contact-icon"></i> 123 Luxury Avenue, Premium City</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-heading">Shop</h5>
+                    <ul class="footer-links">
+                        <li><a href="mobile.html">Mobile</a></li>
+                        <li><a href="fashion.html">Fashion</a></li>
+                        <li><a href="grocery.html">Grocery</a></li>
+                        <li><a href="beauty.html">Beauty</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="electronics.html">Electronics</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-heading">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="support.html">FAQs</a></li>
+                        <li><a href="support.html">Shipping</a></li>
+                        <li><a href="support.html">Returns</a></li>
+                        <li><a href="support.html">Contact</a></li>
+                        <li><a href="support.html">Track Order</a></li>
+                        <li><a href="support.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="footer-heading">Stay Connected</h5>
+                    <p class="text-white-50 mb-3">Subscribe for exclusive offers</p>
+                    <div class="input-group mb-4">
+                        <input type="email" class="form-control newsletter-input" placeholder="Your email address">
+                        <button class="btn newsletter-btn" type="button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-white-50 mb-2">Download Our App</p>
+                        <div class="d-flex gap-2">
+                            <a href="https://apps.apple.com" class="app-btn flex-grow-1">
+                                <i class="fab fa-apple"></i>
+                                <span>App Store</span>
+                            </a>
+                            <a href="https://play.google.com" class="app-btn flex-grow-1">
+                                <i class="fab fa-google-play"></i>
+                                <span>Google Play</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <a href="https://facebook.com" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://pinterest.com" class="social-link"><i class="fab fa-pinterest"></i></a>
+                        <a href="https://youtube.com" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <!-- Small logo in copyright section -->
+                        <img src="logo.png" alt="NandaKart Logo" class="footer-small-logo me-2">
+                        <p class="copyright mb-0">&copy; 2026 NandaKart. All rights reserved.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex justify-content-md-end gap-3">
+                        <i class="fab fa-cc-visa payment-icon"></i>
+                        <i class="fab fa-cc-mastercard payment-icon"></i>
+                        <i class="fab fa-cc-amex payment-icon"></i>
+                        <i class="fab fa-cc-paypal payment-icon"></i>
+                        <i class="fab fa-cc-apple-pay payment-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
