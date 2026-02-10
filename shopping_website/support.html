@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center - NandaKart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Color Palette Variables */
+        :root {
+            --color-primary: #44ffd1;
+            --color-secondary: #6153cc;
+            --color-accent: #a60067;
+            --color-neutral-dark: #961d4e;
+            --color-neutral-light: #360a14;
+            --color-text: #333333;
+            --color-background: #f9f7fe;
+            --color-white: #ffffff;
+            --color-gray-light: #f5f5f5;
+            --color-gray: #e0e0e0;
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-secondary);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--color-neutral-light), var(--color-neutral-dark));
+            color: var(--color-white);
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .logo i {
+            color: var(--color-primary);
+            margin-right: 12px;
+            font-size: 36px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .logo span {
+            color: var(--color-primary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--color-white);
+            font-weight: 500;
+            padding: 10px 18px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .active {
+            background-color: var(--color-accent);
+            box-shadow: 0 4px 8px rgba(166, 0, 103, 0.3);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            padding: 60px 0;
+            min-height: calc(100vh - 280px);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--color-neutral-dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .page-header h1:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            border-radius: 3px;
+        }
+
+        .page-header p {
+            color: var(--color-text);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 30px auto 0;
+            opacity: 0.9;
+        }
+
+        /* Support Sections */
+        .support-section {
+            background-color: var(--color-white);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .support-section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .section-title {
+            color: var(--color-secondary);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 15px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* FAQ Styles */
+        .faq-container {
+            margin-top: 30px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            background-color: var(--color-gray-light);
+            padding: 22px 25px;
+            font-weight: 600;
+            color: var(--color-neutral-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(68, 255, 209, 0.1);
+        }
+
+        .faq-question i {
+            color: var(--color-secondary);
+            transition: transform 0.4s ease;
+            font-size: 18px;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease, padding 0.3s ease;
+            color: var(--color-text);
+            background-color: var(--color-white);
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 25px;
+            border-top: 1px solid var(--color-gray-light);
+        }
+
+        /* Shipping & Returns Styles */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 35px 0;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 280px;
+            background-color: var(--color-white);
+            padding: 30px 25px;
+            border-radius: 12px;
+            border-top: 5px solid var(--color-primary);
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(68, 255, 209, 0.3);
+        }
+
+        .step h3 {
+            color: var(--color-neutral-dark);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .step p {
+            color: var(--color-text);
+            opacity: 0.9;
+        }
+
+        /* Table Styles */
+        .shipping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            box-shadow: var(--shadow-light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .shipping-table thead {
+            background: linear-gradient(to right, var(--color-secondary), var(--color-neutral-dark));
+            color: var(--color-white);
+        }
+
+        .shipping-table th {
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .shipping-table tbody tr {
+            border-bottom: 1px solid var(--color-gray-light);
+            transition: background-color 0.3s ease;
+        }
+
+        .shipping-table tbody tr:hover {
+            background-color: rgba(68, 255, 209, 0.08);
+        }
+
+        .shipping-table td {
+            padding: 18px 20px;
+            color: var(--color-text);
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--color-neutral-dark);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--color-gray);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: var(--color-white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(68, 255, 209, 0.2);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-neutral-dark));
+            color: var(--color-white);
+            border: none;
+            padding: 16px 35px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(97, 83, 204, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(97, 83, 204, 0.4);
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+        }
+
+        .btn i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            box-shadow: 0 4px 15px rgba(68, 255, 209, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--color-accent), var(--color-neutral-dark));
+            box-shadow: 0 6px 20px rgba(166, 0, 103, 0.4);
+        }
+
+        /* Track Order Styles */
+        .track-order-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--color-white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .order-status {
+            display: flex;
+            justify-content: space-between;
+            margin: 50px 0 30px;
+            position: relative;
+        }
+
+        .order-status:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: linear-gradient(to right, var(--color-gray), var(--color-gray));
+            z-index: 1;
+        }
+
+        .status-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .status-icon {
+            width: 45px;
+            height: 45px;
+            background-color: var(--color-white);
+            border: 3px solid var(--color-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 18px;
+            color: var(--color-text);
+            transition: all 0.5s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .status-step.active .status-icon {
+            border-color: var(--color-primary);
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(68, 255, 209, 0.4);
+        }
+
+        .status-step.completed .status-icon {
+            border-color: var(--color-secondary);
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+            box-shadow: 0 6px 15px rgba(97, 83, 204, 0.4);
+        }
+
+        .status-label {
+            font-weight: 600;
+            color: var(--color-neutral-dark);
+            margin-top: 10px;
+        }
+
+        /* Info Cards */
+        .info-card {
+            background: linear-gradient(135deg, rgba(68, 255, 209, 0.1), rgba(97, 83, 204, 0.1));
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 5px solid var(--color-primary);
+        }
+
+        .info-card h3 {
+            color: var(--color-neutral-dark);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+        }
+
+        .info-card li {
+            margin-bottom: 10px;
+            color: var(--color-text);
+        }
+
+        /* Contact Methods */
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .contact-method {
+            background-color: var(--color-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-8px);
+        }
+
+        .contact-method i {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-method h3 {
+            color: var(--color-neutral-dark);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, var(--color-neutral-light), var(--color-neutral-dark));
+            color: var(--color-white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--color-primary);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--color-primary);
+            padding-left: 8px;
+        }
+
+        .footer-section ul li a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        .copyright a {
+            color: var(--color-primary);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .order-status:before {
+                left: 5%;
+                right: 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .support-section {
+                padding: 30px 25px;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+            }
+            
+            .status-step {
+                margin-bottom: 30px;
+            }
+            
+            .order-status:before {
+                display: none;
+            }
+            
+            .order-status {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .support-section {
+                padding: 25px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .track-order-form {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            
+           <div class="logo">
+                <a href="#" style="display: flex; align-items: center; text-decoration: none;">
+                <!-- Replace YOUR_LOGO_URL_HERE with your actual logo image URL -->
+                <img src="log2.png" alt="NandaKart Logo" style="height: 50px; width: auto; margin-right: 15px;">
+            <div>
+            <div style="font-size: 28px; font-weight: 700; color: var(--color-white); line-height: 1.2;">NandaKart</div>
+            <div style="font-size: 12px; color: var(--color-primary); letter-spacing: 1.5px; margin-top: 3px;"></div>
+        </div>
+    </a>
+</div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Support Home</a></li>
+                    <li><a href="#faqs"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                    <li><a href="#shipping"><i class="fas fa-shipping-fast"></i> Shipping</a></li>
+                    <li><a href="#returns"><i class="fas fa-exchange-alt"></i> Returns</a></li>
+                    <li><a href="#contact"><i class="fas fa-headset"></i> Contact</a></li>
+                    <li><a href="#track"><i class="fas fa-map-marker-alt"></i> Track Order</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>NandaKart Support Center</h1>
+                <p>Get help with your orders, shipping, returns, and more. We're here to assist you with any questions or concerns you may have about your shopping experience.</p>
+            </div>
+
+            <!-- FAQs Section -->
+            <section id="faqs" class="support-section">
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+                <p>Find quick answers to the most common questions about our services and policies.</p>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How can I track my order?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            You can track your order by logging into your NandaKart account and visiting the "Order History" section. Alternatively, use the tracking link sent to your email or visit our <a href="#track">Track Order</a> page. You'll receive real-time updates on your package's location and estimated delivery time.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What is your return policy?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            We offer a 30-day return policy for most items. Products must be unused, in original packaging, and with all tags attached. Some items like intimate apparel, personalized products, and digital downloads may not be eligible for return. Refunds are processed within 5-10 business days after we receive your return.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How long does shipping take?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Standard shipping takes 5-7 business days. Express shipping delivers in 2-3 business days. International shipping times vary by destination and typically take 7-14 business days. Please note that processing time (1-2 business days) is added to these delivery estimates.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Do you ship internationally?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, we ship to over 50 countries worldwide. Shipping costs and delivery times vary depending on the destination. You can see the exact shipping cost at checkout before placing your order. Please note that customs duties and taxes may apply for international orders and are the responsibility of the recipient.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What payment methods do you accept?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            We accept all major credit cards (Visa, MasterCard, American Express), PayPal, Apple Pay, Google Pay, and bank transfers for certain orders. All transactions are securely processed with SSL encryption to protect your payment information.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shipping Section -->
+            <section id="shipping" class="support-section">
+                <h2 class="section-title"><i class="fas fa-shipping-fast"></i> Shipping Information</h2>
+                <p>We offer multiple shipping options to suit your needs. All domestic orders are shipped with tracking information so you can monitor your package every step of the way.</p>
+                
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Order Processing</h3>
+                        <p>Orders are processed within 24-48 hours after payment confirmation. You'll receive an email confirmation with your order details.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Packaging & Dispatch</h3>
+                        <p>Your items are carefully packaged and dispatched from our warehouse. You'll receive a shipping confirmation with tracking information.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Delivery</h3>
+                        <p>Your order is delivered to your specified address. For most destinations, you can track your package in real-time using the tracking link.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px; color: var(--color-neutral-dark); font-size: 1.5rem;">Shipping Options & Costs</h3>
+                <table class="shipping-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Delivery Time</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Standard Shipping</strong></td>
+                            <td>5-7 business days</td>
+                            <td>$4.99 (Free on orders over $50)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Express Shipping</strong></td>
+                            <td>2-3 business days</td>
+                            <td>$12.99</td>
+                        </tr>
+                        <tr>
+                            <td><strong>International Shipping</strong></td>
+                            <td>7-14 business days</td>
+                            <td>Varies by destination</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Returns Section -->
+            <section id="returns" class="support-section">
+                <h2 class="section-title"><i class="fas fa-exchange-alt"></i> Returns & Refunds</h2>
+                <p>Our hassle-free return policy ensures you can shop with confidence. If you're not completely satisfied with your purchase, we're here to help.</p>
+                
+                <div class="info-card">
+                    <h3>Return Policy Highlights</h3>
+                    <ul>
+                        <li><strong>30-day return window</strong> from delivery date</li>
+                        <li>Items must be <strong>unused, unworn, and in original packaging</strong></li>
+                        <li>Return shipping is <strong>free for defective or incorrect items</strong></li>
+                        <li>Refunds processed within <strong>5-10 business days</strong> after we receive your return</li>
+                        <li>Exchanges available for size or color changes (subject to availability)</li>
+                    </ul>
+                </div>
+
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Initiate Return</h3>
+                        <p>Log into your account, go to "Order History", select the item you want to return, and follow the instructions.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Pack & Ship</h3>
+                        <p>Pack the item securely in its original packaging with all tags attached. Use the prepaid return label provided.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Refund Processed</h3>
+                        <p>Once we receive and inspect your return, we'll process your refund to the original payment method within 5-10 business days.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px; text-align: center;">
+                    <a href="#" class="btn btn-primary"><i class="fas fa-undo-alt"></i> Start a Return</a>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="support-section">
+                <h2 class="section-title"><i class="fas fa-headset"></i> Contact Us</h2>
+                <p>Have questions or need assistance? Reach out to our customer support team through any of the following methods:</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Phone Support</h3>
+                        <p><strong>Customer Service:</strong> +1 234 567 9800</p>
+                        <p>Monday-Friday: 9am-8pm EST</p>
+                        <p>Saturday-Sunday: 10am-6pm EST</p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Support</h3>
+                        <p><strong>General Inquiries:</strong> support@nandakart.com</p>
+                        <p><strong>Returns & Exchanges:</strong> returns@nandakart.com</p>
+                        <p><strong>Business Inquiries:</strong> business@nandakart.com</p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Office Address</h3>
+                        <p>123 Luxury Avenue</p>
+                        <p>Premium City, PC 10001</p>
+                        <p>United States</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px; color: var(--color-neutral-dark); font-size: 1.5rem;">Send Us a Message</h3>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject">
+                            <option value="">Select a subject</option>
+                            <option value="order">Order Inquiry</option>
+                            <option value="shipping">Shipping Question</option>
+                            <option value="return">Return/Exchange</option>
+                            <option value="product">Product Question</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-number">Order Number (Optional)</label>
+                        <input type="text" id="order-number" placeholder="If related to an order">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="6" placeholder="Please provide details about your inquiry..."></textarea>
+                    </div>
+                    <div class="form-group full-width" style="text-align: center;">
+                        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Track Order Section -->
+            <section id="track" class="support-section">
+                <h2 class="section-title"><i class="fas fa-map-marker-alt"></i> Track Your Order</h2>
+                <p>Enter your order number and email address to track your package in real-time.</p>
+                
+                <form class="track-order-form">
+                    <div class="form-group">
+                        <label for="track-order-number">Order Number</label>
+                        <input type="text" id="track-order-number" placeholder="e.g., NK20230715-12345" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="track-email">Email Address</label>
+                        <input type="email" id="track-email" placeholder="The email used for the order" required>
+                    </div>
+                    <div class="form-group" style="text-align: center;">
+                        <button type="submit" class="btn"><i class="fas fa-search"></i> Track Order</button>
+                    </div>
+                </form>
+
+                <!-- Order Status Visualization -->
+                <div style="margin-top: 60px;">
+                    <h3 style="color: var(--color-neutral-dark); margin-bottom: 30px; font-size: 1.5rem; text-align: center;">Order Status Example</h3>
+                    <div class="order-status">
+                        <div class="status-step completed">
+                            <div class="status-icon"><i class="fas fa-check"></i></div>
+                            <div class="status-label">Order Placed</div>
+                        </div>
+                        <div class="status-step completed">
+                            <div class="status-icon"><i class="fas fa-box"></i></div>
+                            <div class="status-label">Processing</div>
+                        </div>
+                        <div class="status-step active">
+                            <div class="status-icon"><i class="fas fa-shipping-fast"></i></div>
+                            <div class="status-label">Shipped</div>
+                        </div>
+                        <div class="status-step">
+                            <div class="status-icon"><i class="fas fa-home"></i></div>
+                            <div class="status-label">Out for Delivery</div>
+                        </div>
+                        <div class="status-step">
+                            <div class="status-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="status-label">Delivered</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card" style="margin-top: 50px;">
+                    <h3>Tracking Tips</h3>
+                    <ul>
+                        <li>Your order number can be found in your order confirmation email</li>
+                        <li>Tracking information may take up to 24 hours to update after shipping</li>
+                        <li>For international orders, tracking may be limited once the package leaves the origin country</li>
+                        <li>If you're experiencing issues tracking your order, please <a href="#contact">contact our support team</a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+   
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Close other open FAQs
+                document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+                    if (activeAnswer !== answer) {
+                        activeAnswer.classList.remove('active');
+                        activeAnswer.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // Toggle active class on answer
+                answer.classList.toggle('active');
+                
+                // Rotate icon
+                if (answer.classList.contains('active')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission handlers (for demo purposes)
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! Our support team will get back to you within 24 hours.');
+            this.reset();
+        });
+
+        document.querySelector('.track-order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const orderNumber = document.getElementById('track-order-number').value;
+            if (orderNumber) {
+                alert(`Tracking order: ${orderNumber}\n\nFor this demo, we're showing a sample order status visualization. In a real implementation, this would display actual tracking information.`);
+            } else {
+                alert('Please enter an order number to track.');
+            }
+        });
+
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.support-section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

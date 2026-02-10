@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | NandaKart</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-1: #44ffd1;
+            --color-2: #6153cc;
+            --color-3: #a60067;
+            --color-4: #961d4e;
+            --color-5: #360a14;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .signup-container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .signup-header {
+            background: linear-gradient(135deg, var(--color-2) 0%, var(--color-3) 100%);
+            color: white;
+            padding: 2rem 2rem;
+            text-align: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-img {
+            height: 70px;
+            width: auto;
+            margin-bottom: 10px;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .logo-text span:first-child {
+            color: var(--color-1);
+        }
+        
+        .logo-text span:last-child {
+            color: white;
+        }
+        
+        .signup-header h1 {
+            font-weight: 600;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .signup-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        
+        .signup-body {
+            padding: 2rem 2rem;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--color-5);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .form-control {
+            padding: 0.7rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--color-2);
+            box-shadow: 0 0 0 0.25rem rgba(97, 83, 204, 0.15);
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--color-2);
+            border-color: var(--color-2);
+        }
+        
+        .form-check-input:focus {
+            border-color: var(--color-2);
+            box-shadow: 0 0 0 0.25rem rgba(97, 83, 204, 0.25);
+        }
+        
+        .terms-link {
+            color: var(--color-2);
+            text-decoration: none;
+        }
+        
+        .terms-link:hover {
+            color: var(--color-3);
+            text-decoration: underline;
+        }
+        
+        .signup-btn {
+            background: linear-gradient(135deg, var(--color-2) 0%, var(--color-3) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.85rem;
+            font-weight: 600;
+            font-size: 1rem;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+        }
+        
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 15px rgba(97, 83, 204, 0.3);
+        }
+        
+        .divider {
+            text-align: center;
+            position: relative;
+            margin: 1.5rem 0;
+            color: #777;
+        }
+        
+        .divider::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #eee;
+        }
+        
+        .divider span {
+            background-color: white;
+            padding: 0 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            background-color: white;
+            font-weight: 500;
+            color: #444;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-btn:hover {
+            background-color: #f9f9f9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .social-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .login-link {
+            text-align: center;
+            color: #666;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .login-link a {
+            color: var(--color-2);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .login-link a:hover {
+            color: var(--color-3);
+            text-decoration: underline;
+        }
+        
+        .address-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed #eee;
+        }
+        
+        .address-title {
+            font-weight: 600;
+            color: var(--color-2);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            body {
+                padding: 15px;
+            }
+            
+            .signup-header {
+                padding: 1.5rem 1.5rem;
+            }
+            
+            .signup-body {
+                padding: 1.5rem 1.5rem;
+            }
+            
+            .logo-img {
+                height: 60px;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .signup-header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-header">
+            <div class="logo-container">
+                <!-- Replace "log2.png" with your actual logo path -->
+                <img src="log2.png" alt="NandaKart Logo" class="logo-img">
+                <div class="logo-text">
+                    <span>Nanda</span><span>Kart</span>
+                </div>
+            </div>
+            <h1>Create Your Account</h1>
+            <p>Join NandaKart for an exceptional shopping experience</p>
+        </div>
+        
+        <div class="signup-body">
+            <form id="signupForm" action="signup.php" method="POST">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName" class="form-label">First Name *</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name" required>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName" class="form-label">Last Name *</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name" required>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address *</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="password" class="form-label">Password *</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Create password" required>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password *</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter phone number">
+                </div>
+                
+                <!-- Address Section -->
+                <div class="address-section">
+                    <div class="address-title">
+                        <i class="fas fa-map-marker-alt me-2"></i> Shipping Address
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="addressLine1" class="form-label">Address Line 1 *</label>
+                        <input type="text" class="form-control" id="addressLine1" name="addressLine1" placeholder="Street address, P.O. box" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="addressLine2" class="form-label">Address Line 2</label>
+                        <input type="text" class="form-control" id="addressLine2" name="addressLine2" placeholder="Apartment, suite, unit, building, floor">
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="city" class="form-label">City *</label>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="state" class="form-label">State/Province *</label>
+                            <input type="text" class="form-control" id="state" name="state" placeholder="State/Province" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="zipCode" class="form-label">ZIP/Postal Code *</label>
+                            <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="ZIP/Postal code" required>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="country" class="form-label">Country *</label>
+                            <select class="form-control" id="country" name="country" required>
+                                <option value="">Select Country</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="AU">Australia</option>
+                                <option value="IN">India</option>
+                                <option value="DE">Germany</option>
+                                <option value="FR">France</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="terms" required>
+                    <label class="form-check-label" for="terms" style="font-size: 0.9rem;">
+                        I agree to the <a href="terms.html" class="terms-link">Terms of Service</a> and <a href="privacy.html" class="terms-link">Privacy Policy</a> *
+                    </label>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="newsletter">
+                    <label class="form-check-label" for="newsletter" style="font-size: 0.9rem;">
+                        Subscribe to our newsletter for updates and offers
+                    </label>
+                </div>
+                
+                <button type="submit" class="signup-btn">Create Account</button>
+                
+                <div class="divider">
+                    <span>Or sign up with</span>
+                </div>
+                
+                <div class="social-login">
+                    <a href="google-signup.html" class="social-btn google-btn">
+                        <i class="fab fa-google"></i> Sign up with Google
+                    </a>
+                    <a href="apple-signup.html" class="social-btn apple-btn">
+                        <i class="fab fa-apple"></i> Sign up with Apple
+                    </a>
+                </div>
+                
+                <div class="login-link">
+                    Already have an account? <a href="login.html">Sign In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

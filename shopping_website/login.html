@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | NandaKart</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-1: #44ffd1;
+            --color-2: #6153cc;
+            --color-3: #a60067;
+            --color-4: #961d4e;
+            --color-5: #360a14;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .login-header {
+            background: linear-gradient(135deg, var(--color-2) 0%, var(--color-3) 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo-img {
+            height: 50px;
+            width: auto;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .logo-text span:first-child {
+            color: var(--color-1);
+        }
+        
+        .logo-text span:last-child {
+            color: white;
+        }
+        
+        .login-header h1 {
+            font-weight: 600;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .login-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        
+        .login-body {
+            padding: 2.5rem 2rem;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--color-5);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-control {
+            padding: 0.75rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--color-2);
+            box-shadow: 0 0 0 0.25rem rgba(97, 83, 204, 0.15);
+        }
+        
+        .forgot-password {
+            color: var(--color-2);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        
+        .forgot-password:hover {
+            color: var(--color-3);
+            text-decoration: underline;
+        }
+        
+        .login-btn {
+            background: linear-gradient(135deg, var(--color-2) 0%, var(--color-3) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.85rem;
+            font-weight: 600;
+            font-size: 1rem;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 15px rgba(97, 83, 204, 0.3);
+        }
+        
+        .divider {
+            text-align: center;
+            position: relative;
+            margin: 2rem 0;
+            color: #777;
+        }
+        
+        .divider::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #eee;
+        }
+        
+        .divider span {
+            background-color: white;
+            padding: 0 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            background-color: white;
+            font-weight: 500;
+            color: #444;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-btn:hover {
+            background-color: #f9f9f9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .social-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .register-link {
+            text-align: center;
+            color: #666;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .register-link a {
+            color: var(--color-2);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .register-link a:hover {
+            color: var(--color-3);
+            text-decoration: underline;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            body {
+                padding: 15px;
+            }
+            
+            .login-header {
+                padding: 2rem 1.5rem;
+            }
+            
+            .login-body {
+                padding: 2rem 1.5rem;
+            }
+            
+            .logo-img {
+                height: 70px;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .login-header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo-container">
+                <!-- Replace "log2.png" with your actual logo path -->
+                <img src="log2.png" alt="NandaKart Logo" class="logo-img">
+                <div class="logo-text">
+                    <span>Nanda</span><span>Kart</span>
+                </div>
+            </div>
+            <h1>Welcome Back</h1>
+            <p>Sign in to continue your shopping journey</p>
+        </div>
+        
+        <div class="login-body">
+            <form id="loginForm" action="login.php" method="POST">
+                <div class="mb-4">
+                    <label for="email" class="form-label">Email or Username</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="d-flex justify-content-end mb-4">
+                    <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="login-btn">Sign In</button>
+                
+                <div class="divider">
+                    <span>Or continue with</span>
+                </div>
+                
+                <div class="social-login">
+                    <a href="google-login.html" class="social-btn google-btn">
+                        <i class="fab fa-google"></i> Sign in with Google
+                    </a>
+                    <a href="apple-login.html" class="social-btn apple-btn">
+                        <i class="fab fa-apple"></i> Sign in with Apple
+                    </a>
+                </div>
+                
+                <div class="register-link">
+                    Don't have an account? <a href="signup.html">Sign Up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

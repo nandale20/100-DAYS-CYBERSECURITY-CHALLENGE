@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty | NandaKart</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Elegant Color Palette */
+        :root {
+            --teal: #44ffd1;
+            --periwinkle: #6153cc;
+            --magenta: #a60067;
+            --rose: #961d4e;
+            --burgundy: #360a14;
+            --light-bg: #f9f7ff;
+            --white: #ffffff;
+            --light-gray: #f0eefc;
+            --medium-gray: #8a8aa3;
+            --dark-text: #1a1a2e;
+            --shadow: rgba(97, 83, 204, 0.1);
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            padding-top: 100px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--burgundy);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--periwinkle) 0%, var(--burgundy) 100%);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(54, 10, 20, 0.15);
+        }
+
+        .brand-main {
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .brand-accent {
+            color: var(--teal);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Search Bar */
+        .search-input {
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50px 0 0 50px;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .search-input:focus {
+            background: var(--white);
+            box-shadow: none;
+        }
+
+        .search-btn {
+            background: var(--teal);
+            border: none;
+            color: var(--burgundy);
+            border-radius: 0 50px 50px 0;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: var(--magenta);
+            color: var(--white);
+        }
+
+        /* Navigation Icons */
+        .nav-icon {
+            color: var(--white);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-icon:hover {
+            color: var(--teal);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--magenta);
+            color: var(--white);
+            font-size: 0.7rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px var(--shadow);
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .category-link {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 0 2px;
+        }
+
+        .category-link:hover {
+            color: var(--periwinkle);
+            background: rgba(97, 83, 204, 0.05);
+        }
+
+        .category-link.active {
+            background: var(--periwinkle);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(97, 83, 204, 0.2);
+        }
+
+        .category-link.active:hover {
+            background: var(--magenta);
+            color: var(--white);
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px var(--shadow);
+            border: 1px solid var(--light-gray);
+        }
+
+        .filter-label {
+            color: var(--burgundy);
+            font-weight: 600;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            border: 2px solid var(--light-gray);
+            color: var(--medium-gray);
+            padding: 0.5rem 1.25rem;
+            border-radius: 25px;
+            font-weight: 500;
+            margin: 0 8px 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--periwinkle);
+            border-color: var(--periwinkle);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(97, 83, 204, 0.2);
+        }
+
+        /* Custom Select */
+        .custom-select {
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            color: var(--burgundy);
+            font-weight: 500;
+        }
+
+        .custom-select:focus {
+            border-color: var(--periwinkle);
+            box-shadow: 0 0 0 3px rgba(97, 83, 204, 0.1);
+        }
+
+        /* Results Count */
+        .results-count {
+            color: var(--burgundy);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .feature-tag {
+            background: linear-gradient(135deg, var(--teal) 0%, rgba(68, 255, 209, 0.1) 100%);
+            color: var(--burgundy);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Product Cards */
+        .product-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--white);
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(97, 83, 204, 0.15);
+        }
+
+        .product-image {
+            height: 320px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f8f7ff 0%, #f0eefc 100%);
+            padding: 1rem;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        /* 4:3 Aspect Ratio Container */
+        .aspect-ratio-4by3 {
+            position: relative;
+            padding-top: 75%; /* 4:3 Aspect Ratio (3/4 = 0.75) */
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f7ff 0%, #f0eefc 100%);
+        }
+
+        .aspect-ratio-4by3 img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .aspect-ratio-4by3 img {
+            transform: scale(1.05);
+        }
+
+        /* Product Badges */
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            z-index: 2;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .premium-badge {
+            left: 15px;
+            background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+            color: var(--white);
+        }
+
+        .sale-badge {
+            left: 15px;
+            background: var(--magenta);
+            color: var(--white);
+        }
+
+        .new-badge {
+            left: 15px;
+            background: var(--teal);
+            color: var(--burgundy);
+        }
+
+        .bestseller-badge {
+            right: 15px;
+            background: var(--rose);
+            color: var(--white);
+        }
+
+        .limited-badge {
+            left: 15px;
+            background: linear-gradient(135deg, var(--magenta) 0%, var(--rose) 100%);
+            color: var(--white);
+        }
+
+        /* Card Content */
+        .product-brand {
+            color: var(--periwinkle);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-name {
+            color: var(--burgundy);
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+
+        .product-desc {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Rating */
+        .rating-stars {
+            color: var(--teal);
+            font-size: 0.9rem;
+        }
+
+        .rating-count {
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+        }
+
+        /* Price */
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--magenta);
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: var(--medium-gray);
+            text-decoration: line-through;
+        }
+
+        /* Feature Tags */
+        .feature-tag-small {
+            background: rgba(97, 83, 204, 0.1);
+            color: var(--periwinkle);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Type Selector */
+        .type-selector {
+            display: flex;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .type-option {
+            padding: 0.3rem 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .type-option:hover {
+            border-color: var(--periwinkle);
+            color: var(--periwinkle);
+        }
+
+        .type-option.selected {
+            background: var(--periwinkle);
+            color: white;
+            border-color: var(--periwinkle);
+        }
+
+        /* Add to Cart Button */
+        .add-to-cart-btn {
+            background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .add-to-cart-btn:hover {
+            background: linear-gradient(135deg, var(--magenta) 0%, var(--rose) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(166, 0, 103, 0.2);
+        }
+
+        /* Pagination */
+        .custom-pagination .page-link {
+            border: none;
+            color: var(--medium-gray);
+            margin: 0 5px;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .custom-pagination .page-link:hover {
+            background: rgba(97, 83, 204, 0.1);
+            color: var(--periwinkle);
+        }
+
+        .custom-pagination .active .page-link {
+            background: linear-gradient(135deg, var(--periwinkle) 0%, var(--teal) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(97, 83, 204, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--burgundy);
+            color: var(--white);
+            margin-top: 5rem;
+            padding-top: 4rem;
+        }
+
+        .footer-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: var(--white);
+        }
+
+        .footer-brand span {
+            color: var(--teal);
+        }
+
+        .footer-tagline {
+            color: var(--teal);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .footer-heading {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--teal);
+            padding-left: 5px;
+        }
+
+        /* Contact Info */
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-icon {
+            color: var(--teal);
+            margin-right: 0.75rem;
+            width: 20px;
+        }
+
+        /* Newsletter */
+        .newsletter-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border-radius: 25px 0 0 25px;
+            padding: 0.75rem 1.25rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter-btn {
+            background: var(--teal);
+            border: none;
+            color: var(--burgundy);
+            border-radius: 0 25px 25px 0;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--magenta);
+            color: var(--white);
+        }
+
+        /* App Buttons */
+        .app-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: 0.75rem;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .app-btn:hover {
+            background: var(--periwinkle);
+            color: var(--white);
+        }
+
+        /* Social Links */
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--teal);
+            color: var(--burgundy);
+        }
+
+        /* Copyright */
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Payment Methods */
+        .payment-icon {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .payment-icon:hover {
+            color: var(--teal);
+        }
+
+        /* Logo Icon Styling */
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--periwinkle) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer Logo Styles */
+        .footer-logo-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Small logo in copyright section */
+        .footer-small-logo {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Beauty Specific Styles */
+        .beauty-type {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .organic-tag {
+            background: linear-gradient(135deg, var(--teal) 0%, rgba(68, 255, 209, 0.1) 100%);
+            color: var(--burgundy);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            body {
+                padding-top: 140px;
+            }
+            
+            .search-container {
+                order: 3;
+                width: 100%;
+                margin: 1rem 0 0 0 !important;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .category-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .product-image {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-image {
+                height: 250px;
+            }
+            
+            .filter-btn {
+                margin: 0 4px 8px 0;
+                padding: 0.4rem 1rem;
+            }
+            
+            .navbar-brand img {
+                height: 35px;
+            }
+            
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            /* Footer responsive adjustments */
+            .footer-logo-brand {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-logo-img {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+            
+            .footer-brand {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-title {
+                font-size: 1.75rem;
+            }
+            
+            .product-image {
+                height: 220px;
+            }
+            
+            .current-price {
+                font-size: 1.25rem;
+            }
+            
+            .footer-brand {
+                font-size: 1.8rem;
+            }
+            
+            .footer-logo-brand {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-logo-img {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <!-- Logo Image -->
+                <img src="log2.png" alt="NandaKart Logo" height="45" class="me-2">
+                <!-- Brand Name -->
+                <div class="d-none d-md-block">
+                    <span class="brand-main">Nanda</span><span class="brand-accent">Kart</span>
+                </div>
+            </a>
+            
+            <!-- Search Bar -->
+            <div class="search-container mx-lg-3 flex-grow-1">
+                <div class="input-group">
+                    <input type="text" class="form-control search-input" placeholder="Search for skincare, makeup, fragrances...">
+                    <button class="btn search-btn" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Cart & User -->
+            <div class="d-flex align-items-center">
+                <a href="#" class="nav-icon mx-3 position-relative">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                    <span class="cart-badge">8</span>
+                </a>
+                <a href="#" class="nav-icon mx-3">
+                    <i class="fas fa-user fa-lg"></i>
+                </a>
+                <button class="navbar-toggler border-0 nav-icon d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    
+
+    <!-- Main Content -->
+    <main class="container mt-4 pt-4">
+        <!-- Page Header -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h1 class="page-title mb-3">Luxury Beauty Collection</h1>
+                <p class="page-subtitle">Discover premium skincare, makeup, and fragrances for your perfect glow</p>
+            </div>
+        </div>
+
+        <!-- Filter & Sort -->
+        <div class="row mb-4 filter-section">
+            <div class="col-md-8">
+                <div class="d-flex flex-wrap align-items-center">
+                    <span class="filter-label me-3">Filter by:</span>
+                    <div>
+                        <button class="btn filter-btn active">All Products</button>
+                        <button class="btn filter-btn">Skincare</button>
+                        <button class="btn filter-btn">Makeup</button>
+                        <button class="btn filter-btn">Fragrances</button>
+                        <button class="btn filter-btn">Hair Care</button>
+                        <button class="btn filter-btn">Bath & Body</button>
+                        <button class="btn filter-btn">Organic</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3 mt-md-0">
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <span class="filter-label me-2">Sort by:</span>
+                    <select class="form-select custom-select w-auto">
+                        <option>Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest Arrivals</option>
+                        <option>Best Rated</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Info -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center py-3 border-bottom">
+                    <p class="results-count mb-0">72 Premium Beauty Items Found</p>
+                    <span class="feature-tag">
+                        <i class="fas fa-gift me-1"></i> Free Gifts on Orders ₹100+
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="row">
+            <!-- Product 1: Luxury Skincare -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge premium-badge">Luxury</span>
+                        <span class="product-badge sale-badge">-20%</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1556228578-9c360e1dab42?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Luxury Skincare Set">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">LA MER</div>
+                        <h5 class="product-name mt-2">Regenerating Skincare Set</h5>
+                        <p class="product-desc">Complete anti-aging routine with serum, moisturizer, and eye cream</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="beauty-type">Skincare Set</span>
+                            <span class="organic-tag">Cruelty Free</span>
+                        </div>
+                        
+                        <div class="type-selector">
+                            <div class="type-option selected">Normal</div>
+                            <div class="type-option">Dry</div>
+                            <div class="type-option">Oily</div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(189)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹299.00</span>
+                            <span class="original-price ms-3">₹374.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-leaf"></i> Vegan
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-gem"></i> Luxury
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: Makeup Collection -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge new-badge">New</span>
+                        <span class="product-badge bestseller-badge">Bestseller</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Premium Makeup Collection">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">DIOR</div>
+                        <h5 class="product-name mt-2">Backstage Makeup Palette</h5>
+                        <p class="product-desc">Professional makeup palette with eyeshadows, blushes, and highlighters</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="beauty-type">Makeup Palette</span>
+                            <span class="organic-tag">Long Lasting</span>
+                        </div>
+                        
+                        <div class="type-selector">
+                            <div class="type-option selected">Warm</div>
+                            <div class="type-option">Cool</div>
+                            <div class="type-option">Neutral</div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(245)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹89.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-paint-brush"></i> Professional
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-palette"></i> Versatile
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: Perfume -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge premium-badge">Signature</span>
+                        <span class="product-badge limited-badge">Limited</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Luxury Perfume">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">CHANEL</div>
+                        <h5 class="product-name mt-2">No.5 Eau de Parfum</h5>
+                        <p class="product-desc">Timeless floral fragrance with notes of rose, jasmine, and sandalwood</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="beauty-type">Perfume 100ml</span>
+                            <span class="organic-tag">Signature Scent</span>
+                        </div>
+                        
+                        <div class="type-selector">
+                            <div class="type-option selected">Eau de Parfum</div>
+                            <div class="type-option">Eau de Toilette</div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(312)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹159.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-flower"></i> Floral
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-clock"></i> 8+ Hours
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: Hair Care -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge bestseller-badge">Bestseller</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Hair Care Set">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">OLAPLEX</div>
+                        <h5 class="product-name mt-2">Repair Hair Treatment Set</h5>
+                        <p class="product-desc">Complete hair repair system with shampoo, conditioner, and treatment</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="beauty-type">Hair Care Set</span>
+                            <span class="organic-tag">Damage Repair</span>
+                        </div>
+                        
+                        <div class="type-selector">
+                            <div class="type-option selected">All Hair</div>
+                            <div class="type-option">Color Treated</div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(278)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹89.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-star"></i> Salon Quality
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-heart"></i> Sulfate Free
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5: Organic Skincare -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge new-badge">Organic</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Organic Skincare">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">TATA HARPER</div>
+                        <h5 class="product-name mt-2">Organic Face Oil</h5>
+                        <p class="product-desc">100% natural face oil with rosehip, jojoba, and argan oils</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="beauty-type">Face Oil 30ml</span>
+                            <span class="organic-tag">100% Natural</span>
+                        </div>
+                        
+                        <div class="type-selector">
+                            <div class="type-option selected">All Skin</div>
+                            <div class="type-option">Sensitive</div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(156)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹75.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-leaf"></i> Certified Organic
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-recycle"></i> Sustainable
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6: Makeup Brushes -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge sale-badge">-30%</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Makeup Brushes">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">ARTIS</div>
+                        <h5 class="product-name mt-2">Professional Brush Set</h5>
+                        <p class="product-desc">Complete set of synthetic makeup brushes for flawless application</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="beauty-type">10-Piece Set</span>
+                            <span class="organic-tag">Vegan Bristles</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(234)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹69.99</span>
+                            <span class="original-price ms-3">₹99.99</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-paint-brush"></i> Professional
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-broom"></i> Easy Clean
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7: Bath & Body -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge premium-badge">Luxury</span>
+                        <span class="product-badge new-badge">Aromatherapy</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Bath & Body Set">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">JO MALONE</div>
+                        <h5 class="product-name mt-2">Luxury Bath Collection</h5>
+                        <p class="product-desc">Aromatherapy bath set with bath oils, salts, and body creams</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="beauty-type">Bath Set</span>
+                            <span class="organic-tag">Relaxing</span>
+                        </div>
+                        
+                        <div class="type-selector">
+                            <div class="type-option selected">Lavender</div>
+                            <div class="type-option">Rose</div>
+                            <div class="type-option">Citrus</div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(189)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹125.00</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-spa"></i> Aromatherapy
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-bath"></i> Spa Experience
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8: Men's Grooming -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="card product-card h-100">
+                    <div class="position-relative">
+                        <span class="product-badge sale-badge">-25%</span>
+                        <span class="product-badge bestseller-badge">Trending</span>
+                        <!-- 4:3 Aspect Ratio Container -->
+                        <div class="aspect-ratio-4by3">
+                            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Men's Grooming Kit">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">LAB SERIES</div>
+                        <h5 class="product-name mt-2">Premium Grooming Kit</h5>
+                        <p class="product-desc">Complete skincare and grooming set for men with anti-aging benefits</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="beauty-type">Grooming Set</span>
+                            <span class="organic-tag">Oil Control</span>
+                        </div>
+                        
+                        <div class="type-selector">
+                            <div class="type-option selected">All Skin</div>
+                            <div class="type-option">Sensitive</div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(301)</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="current-price">₹89.99</span>
+                            <span class="original-price ms-3">₹119.99</span>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="feature-tag-small">
+                                <i class="fas fa-user-tie"></i> Men's Care
+                            </span>
+                            <span class="feature-tag-small">
+                                <i class="fas fa-clock"></i> Anti-Aging
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 pt-0">
+                        <button class="btn add-to-cart-btn">
+                            <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="mt-5">
+            <ul class="pagination custom-pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><span class="page-link">...</span></li>
+                <li class="page-item"><a class="page-link" href="#">8</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <!-- Logo with Brand Name -->
+                    <div class="footer-logo-brand mb-4">
+                        <!-- Logo Image -->
+                        <img src="logo.png" alt="NandaKart Logo" class="footer-logo-img me-3">
+                        <!-- Brand Name with styling -->
+                        <div class="footer-brand-text">
+                            <h3 class="footer-brand mb-1">Nanda<span>Kart</span></h3>
+                            <p class="footer-tagline mb-0">Redefining Luxury Shopping</p>
+                        </div>
+                    </div>
+                    
+                    <p class="footer-description mb-4">
+                        Your premier destination for premium products with unparalleled quality and service.
+                    </p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-alt contact-icon"></i> +1 234 567 9800</p>
+                        <p><i class="fas fa-envelope contact-icon"></i> support@nandakart.com</p>
+                        <p><i class="fas fa-map-marker-alt contact-icon"></i> 123 Luxury Avenue, Premium City</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-heading">Shop</h5>
+                    <ul class="footer-links">
+                        <li><a href="mobile.html">Mobile</a></li>
+                        <li><a href="fashion.html">Fashion</a></li>
+                        <li><a href="grocery.html">Grocery</a></li>
+                        <li><a href="beauty.html">Beauty</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="electronics.html">Electronics</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-heading">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="support.html">FAQs</a></li>
+                        <li><a href="support.html">Shipping</a></li>
+                        <li><a href="support.html">Returns</a></li>
+                        <li><a href="support.html">Contact</a></li>
+                        <li><a href="support.html">Track Order</a></li>
+                        <li><a href="support.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="footer-heading">Stay Connected</h5>
+                    <p class="text-white-50 mb-3">Subscribe for exclusive offers</p>
+                    <div class="input-group mb-4">
+                        <input type="email" class="form-control newsletter-input" placeholder="Your email address">
+                        <button class="btn newsletter-btn" type="button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-white-50 mb-2">Download Our App</p>
+                        <div class="d-flex gap-2">
+                            <a href="https://apps.apple.com" class="app-btn flex-grow-1">
+                                <i class="fab fa-apple"></i>
+                                <span>App Store</span>
+                            </a>
+                            <a href="https://play.google.com" class="app-btn flex-grow-1">
+                                <i class="fab fa-google-play"></i>
+                                <span>Google Play</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <a href="https://facebook.com" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://pinterest.com" class="social-link"><i class="fab fa-pinterest"></i></a>
+                        <a href="https://youtube.com" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <!-- Small logo in copyright section -->
+                        <img src="logo.png" alt="NandaKart Logo" class="footer-small-logo me-2">
+                        <p class="copyright mb-0">&copy; 2026 NandaKart. All rights reserved.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex justify-content-md-end gap-3">
+                        <i class="fab fa-cc-visa payment-icon"></i>
+                        <i class="fab fa-cc-mastercard payment-icon"></i>
+                        <i class="fab fa-cc-amex payment-icon"></i>
+                        <i class="fab fa-cc-paypal payment-icon"></i>
+                        <i class="fab fa-cc-apple-pay payment-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
