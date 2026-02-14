@@ -1,0 +1,22 @@
+Days 41 & 42: 
+
+The Power of Persistence – Understanding Brute Force Attacks
+After spending the last week building my E-commerce "target", I’ve shifted my focus to the front lines of authentication security. For the past two days, I have been studying the mechanics of Brute Force Attacks.
+
+What is a Brute Force Attack? It is a trial-and-error method used to guess login credentials, encryption keys, or hidden web pages. It is the digital equivalent of an attacker trying every single key on a keychain until one finally turns the lock.
+
+Key Technical Insights:
+
+The Vulnerability: I explored how weak password policies and the lack of account lockout mechanisms in PHP/SQL systems can leave the "front door" wide open.
+
+Automation: I learned how tools can automate thousands of attempts per second, making manual password guessing a thing of the past.
+The Database Connection: Understanding how the back-end verifies credentials against the MySQL database helped me see exactly where the attack hits the system.
+
+The Defensive Blueprint: As an aspiring Penetration Tester and Cyber Volunteer, I’m not just learning how these attacks work—I’m learning how to stop them. My top three defensive strategies include:
+Account Lockouts: Implementing a "three strikes and you're out" rule in the PHP code.
+
+Rate Limiting: Slowing down the server's response to repeated failed attempts.
+
+MFA (Multi-Factor Authentication): Adding a second layer of defense that a password guesser cannot bypass.
+
+Building the "Target" taught me how to create; now, I'm learning how to harden it against real-world threats.
