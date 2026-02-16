@@ -1,0 +1,17 @@
+A File Upload Vulnerability occurs when a web application allows users to upload files to its server without sufficiently validating the file's type, size, or content. This is a critical security flaw because it can provide an attacker with a "backdoor" to the server.
+
+🚩 How it Works
+The Trap: An application expects a standard file, such as a profile picture, but an attacker uploads a malicious script (like a PHP shell) instead.
+
+Bypassing Checks: Attackers often use tools like Burp Suite to bypass simple client-side validations that only check file extensions in the browser.
+
+Execution: If the server does not strictly validate the file on the back-end, the malicious script is stored. The attacker can then navigate to the file's URL to execute commands directly on the host system, a process known as Remote Code Execution (RCE).
+
+🛡️ Defensive Strategies
+To secure an application, developers should implement several layers of defense:
+
+Server-Side Validation: Never trust the file extension; use PHP to verify the actual MIME type and content of the file (e.g., using getimagesize() for photos).
+
+File Renaming: Automatically rename uploaded files to a random string to prevent attackers from guessing the path to their malicious payload.
+
+Storage Isolation: Store uploaded files outside of the web root or on a completely separate server to prevent the server from executing them as code.
