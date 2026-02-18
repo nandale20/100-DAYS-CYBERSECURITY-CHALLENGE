@@ -1,0 +1,31 @@
+Headline: Day 46: Why "Simple" File Uploads are a Security Nightmare 🛡️💻
+
+The Content: Today I’m looking at a PHP snippet that handles file uploads. At first glance, it looks functional—it takes a file and moves it to a folder. But in the world of Cybersecurity, "functional" doesn't mean "secure."
+
+The Flaw: This code has Zero Validation.
+
+No File Type Check: It says "Your image was not uploaded," but it never actually checks if the file is an image!
+
+The Attack: An attacker can upload a .php web shell (like cmd.php).
+The Result: Once uploaded, the attacker can navigate to the URL and execute commands on the server. Remote Code Execution (RCE) achieved. ✅
+
+code which is low level
+<?php
+
+if( isset( $_POST[ 'Upload' ] ) ) {
+ // Where are we going to be writing to?
+ $target_path  = DVWA_WEB_PAGE_TO_ROOT . "hackable/uploads/";
+ $target_path .= basename( $_FILES[ 'uploaded' ][ 'name' ] );
+
+ // Can we move the file to the upload folder?
+ if( !move_uploaded_file( $_FILES[ 'uploaded' ][ 'tmp_name' ], $target_path ) ) {
+ // No
+ echo '<pre>Your image was not uploaded.</pre>';
+ }
+ else {
+ // Yes!
+ echo "<pre>{$target_path} succesfully uploaded!</pre>";
+ }
+}
+
+?>
