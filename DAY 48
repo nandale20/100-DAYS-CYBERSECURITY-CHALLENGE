@@ -1,0 +1,9 @@
+Broken Access Control continues to dominate the OWASP Top 10 list in 2026, with 100% of tested applications showing some form of access control weakness. This year, several organizations reported incidents where unauthorized users gained access to sensitive data due to misconfigured object-level permissions and weak session validation.
+One notable case involved a financial services platform where attackers exploited Broken Object Level Authorization (BOLA) to retrieve confidential customer records. This breach underscores how logical flaws in access control can be just as damaging as technical exploits.
+⚠️ Key Risks:
+- Unauthorized data exposure (CWE-200, CWE-201)
+- Server-Side Request Forgery (CWE-918)
+- Cross-Site Request Forgery (CWE-352)
+✅ Takeaway:
+Organizations must enforce least privilege, conduct regular access reviews, and implement robust authorization checks at every layer of their applications.
+#CyberSecurity #OWASP #BrokenAccessControl #DataBreach #ApplicationSecurity
